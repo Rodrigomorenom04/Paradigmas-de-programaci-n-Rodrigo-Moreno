@@ -39,6 +39,18 @@ while True:
         print(f"Fundado: {datos['founded']}")
         print(f"Entrenador: {datos['coach']['name']}")
 
+        print("\nAlgunos jugadores:")
+        for jugador in datos['squad'][:5]:
+            print(f" - {jugador['name']} ({jugador['position']})")
+        busqueda = input("\nBuscar un jugador (nombre o parte del nombre, ENTER para omitir): ").strip().lower()
 
+        if busqueda:
+            encontrados = [j for j in datos['squad'] if busqueda in j['name'].lower()]
+            if encontrados:
+                print(f"\nResultados para '{busqueda}':")
+                for jugador in encontrados:
+                    print(f" - {jugador['name']} | Posicion: {jugador['position']} | Nacionalidad: {jugador['nationality']} | Nacimiento: {jugador['dateOfBirth']}")
+            else:
+                print(f"No se encontro ningun jugador con '{busqueda}'.")
 
 
