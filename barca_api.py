@@ -16,3 +16,21 @@ if VERBOSE:
 headers = {
     "X-Auth-Token": API_KEY,
 }
+
+
+
+while True:
+    print(f'\n =================== Football Data =====================')
+    opcion = input("Presiona ENTER para ver info del equipo, o escribe 'salir': ")
+
+    if opcion.lower().strip() == "salir":
+        print("Saliendo del programa...")
+        break
+
+    respuesta = requests.get(URL, headers=headers)
+    print("Status code:", respuesta.status_code)
+
+
+
+
+    
