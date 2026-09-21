@@ -28,9 +28,17 @@ while True:
         break
 
     respuesta = requests.get(URL, headers=headers)
-    print("Status code:", respuesta.status_code)
+
+    if respuesta.status_code != 200:
+        print("Algo salio mal:")
+        print(respuesta.text)    
+    else:
+        datos = respuesta.json()
+        print(f"\nEquipo: {datos['name']}")
+        print(f"Estadio: {datos['venue']}")
+        print(f"Fundado: {datos['founded']}")
+        print(f"Entrenador: {datos['coach']['name']}")
 
 
 
 
-    
